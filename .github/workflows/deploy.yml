@@ -35,5 +35,7 @@ jobs:
       run: |
         aws ecs update-service \
           --cluster testlegalario \
-          --service my-service \
-          --force-new-deployment
+          --service testlegalario \
+          --force-new-deployment \
+          --network-configuration 'awsvpcConfiguration={subnets=["subnet-0f74b7afcd42f2d00","subnet-0216d09469421c5f3","subnet-0662a41af8fdd231b"],securityGroups=["sg-12345678"],assignPublicIp="ENABLED"}'
+
