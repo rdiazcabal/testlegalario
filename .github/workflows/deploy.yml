@@ -28,7 +28,7 @@ jobs:
       run: |
         REPO_URI=376129854267.dkr.ecr.us-east-1.amazonaws.com/testlegalario
         IMAGE_TAG=$GITHUB_SHA
-        docker build -t $REPO_URI:$IMAGE_TAG .
+        docker build -t $REPO_URI:$IMAGE_TAG -f .github/workflows/Dockerfile .
         docker push $REPO_URI:$IMAGE_TAG
 
     - name: Deploy to ECS using Fargate
