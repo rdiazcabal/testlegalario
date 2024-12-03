@@ -35,5 +35,5 @@ jobs:
       run: |
         aws ecs update-service \
           --cluster testlegalario \
-          --service my-service \
+          --service testlegalario \
           --force-new-deployment
