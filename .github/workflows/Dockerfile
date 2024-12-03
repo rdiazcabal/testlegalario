@@ -1,2 +1,2 @@
 FROM nginx:latest
-COPY index.html .github/workflows/index.html 
+COPY .github/workflows/index.html /usr/share/nginx/html/index.html 

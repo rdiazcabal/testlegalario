@@ -34,6 +34,6 @@ jobs:
     - name: Deploy to ECS using Fargate
       run: |
         aws ecs update-service \
-          --cluster my-cluster \
+          --cluster testlegalario \
           --service my-service \
           --force-new-deployment
