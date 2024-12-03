@@ -1,0 +1,39 @@
+name: Deploy to AWS
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  build-and-deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Log in to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build and push Docker image
+      run: |
+        REPO_URI=<AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/testlegalario
+        IMAGE_TAG=$GITHUB_SHA
+        docker build -t $REPO_URI:$IMAGE_TAG .
+        docker push $REPO_URI:$IMAGE_TAG
+
+    - name: Deploy to ECS using Fargate
+      run: |
+        aws ecs update-service \
+          --cluster my-cluster \
+          --service my-service \
+          --force-new-deployment
