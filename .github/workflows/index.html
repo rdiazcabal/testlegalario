@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>¡Hola LegaLario!</title>
+</head>
+<body>
+    <h1>¡Hola LegaLario!</h1>
+</body>
+</html>
+
+
