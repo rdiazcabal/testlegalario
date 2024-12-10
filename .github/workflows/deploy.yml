@@ -37,4 +37,3 @@ jobs:
           --cluster testlegalario \
           --service testlegalario \
           --force-new-deployment \
-          
