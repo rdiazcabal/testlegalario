@@ -37,5 +37,4 @@ jobs:
           --cluster testlegalario \
           --service testlegalario \
           --force-new-deployment \
-          #--network-configuration 'awsvpcConfiguration={subnets=["subnet-0f74b7afcd42f2d00","subnet-0216d09469421c5f3","subnet-0662a41af8fdd231b"],assignPublicIp="ENABLED"}'
-
+        
